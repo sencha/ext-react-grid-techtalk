@@ -1,23 +1,12 @@
 import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reducer from './reducer';
-import Layout from './Layout';
-
-const store = createStore(
-    reducer,
-    {
-        showOptions: true,
-        criteria: { }
-    }, 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import { Container } from '@extjs/ext-react';
+import StocksGrid from './StocksGrid';
 
 export default function App() {
     return (
-        <Provider store={store}>
-            <Layout/>
-        </Provider>
+        <Container fullscreen layout="fit">
+            <StocksGrid/>
+        </Container>
     )
 }
 

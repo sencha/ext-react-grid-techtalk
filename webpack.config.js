@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const ExtJSReactorWebpackPlugin = require('@extjs/reactor-webpack-plugin');
+const ExtReactWebpackPlugin = require('@extjs/reactor-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src');
 
@@ -11,8 +11,7 @@ module.exports = function (env) {
     const isProd = nodeEnv === 'production';
 
     const plugins = [
-        new ExtJSReactorWebpackPlugin({
-            theme: 'theme-rest-example',
+        new ExtReactWebpackPlugin({
             production: isProd
         }),
         new webpack.EnvironmentPlugin({
@@ -43,7 +42,7 @@ module.exports = function (env) {
         template: 'index.html',
         hash: true
     }), new OpenBrowserPlugin({ 
-        url: 'http://localhost:8082' 
+        url: 'http://localhost:8080' 
     }));
 
     return {
@@ -56,7 +55,7 @@ module.exports = function (env) {
 
         output: {
             path: path.join(__dirname, 'build'),
-            filename: 'bundle.js'
+            filename: 'bundle.js',
         },
 
         module: {
@@ -68,18 +67,11 @@ module.exports = function (env) {
                         'babel-loader'
                     ],
                 },
-                {
-                    test: /\.css$/,
-                    use: [
-                        'style-loader', 
-                        'css-loader'
-                    ]
-                }
-            ]
+            ],
         },
 
         resolve: {
-            // The following is only needed when running this boilerplate within the extjs-reactor repo with lerna bootstrap.  You can remove this from your own projects.
+            // The following is only needed when running this boilerplate within the extjs-reactor repo.  You can remove this from your own projects.
             alias: {
                 "react-dom": path.resolve('./node_modules/react-dom'),
                 "react": path.resolve('./node_modules/react')
@@ -92,6 +84,29 @@ module.exports = function (env) {
             colors: {
                 green: '\u001b[32m',
             }
+        },
+
+        devServer: {
+            contentBase: './build',
+            historyApiFallback: true,
+            port: 8080,
+            compress: isProd,
+            inline: !isProd,
+            hot: !isProd,
+            stats: {
+                assets: true,
+                children: false,
+                chunks: false,
+                hash: false,
+                modules: false,
+                publicPath: false,
+                timings: true,
+                version: false,
+                warnings: true,
+                colors: {
+                    green: '\u001b[32m'
+                }
+            },
         }
     };
 };
