@@ -28,10 +28,12 @@ You can view the app by pointing your browser to [http://localhost:8080](http://
 
 This repo uses tags corresponding to the steps in the tech talk:
 
-* step-1 Basic scaffolding
-* step-2 Basic Grid with store and columns
-* step-3 The "Buy" button
-* step-4 The trends sparkline chart
-* step-5 Exporting to Excel and CSV
-* step-6 Cell editing
-* step-7 Row editing on phones and tablets
+| Tag | Description |
+| --- | ----------- |
+| step-1 | Basic scaffolding |
+| step-2 | Basic Grid with store and columns |
+| step-3 | The "Buy" button |
+| step-4 | The trends sparkline chart |
+| step-5 | Exporting to Excel and CSV |
+| step-6 | Cell editing |
+| step-7 | Row editing on phones and tablets |
