@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import stocks from './data/stocks';
-import { Grid, Column } from '@extjs/ext-react';
+import { Grid, Column, Button, RendererCell, Container } from '@extjs/ext-react';
 
 export default class StocksGrid extends Component {
     
@@ -11,11 +11,18 @@ export default class StocksGrid extends Component {
         }]
     })
 
+    actionsRenderer = (value, record) => {
+        return (
+            <Button text="Buy" ui="round" className="x-item-no-select"/>
+        )
+    }
+
     render() {
         return (
             <Grid store={this.store}>
+                <Column renderer={this.actionsRenderer}/>
                 <Column dataIndex="name" text="Name" width={300}/>
-                <Column dataIndex="symbol" text="Symbol"/>
+                <Column dataIndex="symbol" text="Symbol" renderer={value => <b>{value}</b>}/>
                 <Column dataIndex="sector" text="Sector" width={200}/>
                 <Column dataIndex="industry" text="Industry" width={350}/>
             </Grid>

@@ -20,7 +20,7 @@
   "homepage": "https://github.com/sencha/extjs-reactor#readme",
   "dependencies": {
     "@extjs/ext-react": "^6.5.1-98",
-    "@extjs/reactor": "^1.0.0",
+    "@extjs/reactor": "^1.0.3-31",
     "babel-polyfill": "^6.23.0",
     "babel-runtime": "^6.23.0",
     "prop-types": "^15.5.8",
